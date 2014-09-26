@@ -1,0 +1,5 @@
+#standardHeader("Pay Now")
+
+<p>There was an error processing your mock payment. Please report this to <a href="mailto:admins@feedxl.com">admins@feedxl.com</a>.</p>
+
+#standardFooter()

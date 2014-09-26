@@ -1,0 +1,39 @@
+<toolbox>
+	<xhtml>true</xhtml>
+	<tool>
+		<key>context</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.view.tools.ContextTool</class>
+	</tool>
+	<tool>
+		<key>link</key>
+		<scope>request</scope>
+		<class>org.apache.velocity.tools.view.tools.LinkTool</class>
+	</tool>
+	<tool>
+		<key>esc</key>
+		<scope>application</scope>
+		<class>au.com.xprime.webapp.velocity.EscapeTool</class>
+	</tool>
+	<tool>
+		<key>alternator</key>
+		<scope>application</scope>
+		<class>org.apache.velocity.tools.generic.AlternatorTool</class>
+		<parameter name="auto-alternate" value="true" />
+	</tool>
+	<tool>
+		<key>number</key>
+		<scope>application</scope>
+		<class>org.apache.velocity.tools.generic.NumberTool</class>
+	</tool>
+	<tool>
+		<key>math</key>
+		<scope>application</scope>
+		<class>org.apache.velocity.tools.generic.MathTool</class>
+	</tool>
+	<tool>
+		<key>list</key>
+		<scope>application</scope>
+		<class>org.apache.velocity.tools.generic.ListTool</class>
+	</tool>
+</toolbox>

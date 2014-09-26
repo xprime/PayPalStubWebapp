@@ -1,0 +1,63 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.velocity.toolboxlocation" value="/WEB-INF/classes/toolbox.xml" />
+	<constant name="struts.devMode" value="true" />
+	<package name="stub-base" extends="struts-default">
+		<result-types>
+			<result-type name="dispatcher" class="org.apache.struts2.dispatcher.VelocityResult" default="true" />
+		</result-types>
+		<interceptors>
+			<!-- <interceptor name="hibernate" class="au.com.xprime.webapp.hibernate.struts.HibernateInterceptor" /> -->
+			<interceptor-stack name="stubStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">_IGN_.*</param>
+					<param name="excludeParams">submit.*</param>
+				</interceptor-ref>
+				<interceptor-ref name="servletConfig" />
+				<!-- <interceptor-ref name="hibernate" />  -->
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">_IGN_.*</param>
+					<param name="excludeParams">submit.*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel</param>
+				</interceptor-ref>
+			</interceptor-stack>
+			<interceptor-stack name="verifyStack">
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="stubStack" />
+	</package>
+	<package name="stub" extends="stub-base">
+		<action name="index">
+			<result>/struts/index.vm</result>
+		</action>
+		<action name="payNow" class="au.com.xprime.webapp.paypalstub.PayNowAction">
+			<result>/struts/payNow.vm</result>
+		</action>
+		<action name="payNowSubmit" class="au.com.xprime.webapp.paypalstub.PayNowSubmitAction">
+			<result name="error">/struts/payNowSubmitError.vm</result>
+			<result name="redirect" type="redirect">
+				<param name="location">${redirectResultUrl}</param>
+			</result>
+		</action>
+		<action name="ipnVerify">
+			<interceptor-ref name="verifyStack" />
+			<result>/struts/ipnVerify.vm</result>
+		</action>
+	</package>
+</struts>

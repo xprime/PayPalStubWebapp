@@ -1,0 +1,56 @@
+#standardHeader("Pay Now")
+
+<p>Welcome to the <b>mock payment centre for FeedXL</b>. You are purchasing the following item:</p>
+
+<p style="margin-left: 20px;">
+	<b>Item:</b> $!item_name
+	<br><b>Price:</b> $esc.dollar$!amount ($!currency_code)
+</p>
+
+<p>Press the "Submit mock payment" button to pay FeedXL in monopoly money, or press the "Cancel mock payment" to back out of this zero dollar transaction</p>
+
+<form id="submitForm" method="post" action="#surl("action=payNowSubmit")">
+	<input type="hidden" name="cmd" value="${esc.html($!cmd)}">
+	<input type="hidden" name="custom" value="${esc.html($!custom)}">
+	<input type="hidden" name="item_name" value="${esc.html($!item_name)}">
+	<input type="hidden" name="item_number" value="${esc.html($!item_number)}">
+	<input type="hidden" name="charset" value="${esc.html($!charset)}">
+	<input type="hidden" name="currency_code" value="${esc.html($!currency_code)}">
+	<input type="hidden" name="amount" value="${esc.html($!amount)}">
+	<input type="hidden" name="business" value="${esc.html($!business)}">
+	<input type="hidden" name="first_name" value="${esc.html($!first_name)}">
+	<input type="hidden" name="last_name" value="${esc.html($!last_name)}">
+	<input type="hidden" name="address1" value="${esc.html($!address1)}">
+	<input type="hidden" name="address2" value="${esc.html($!address2)}">
+	<input type="hidden" name="city" value="${esc.html($!city)}">
+	<input type="hidden" name="state" value="${esc.html($!state)}">
+	<input type="hidden" name="country" value="${esc.html($!country)}">
+	<input type="hidden" name="zip" value="${esc.html($!zip)}">
+	<input type="hidden" name="notify_url" value="${esc.html($!notify_url)}">
+	<input type="hidden" name="return" value="${esc.html($!return)}">
+	<input type="hidden" name="cancel_return" value="${esc.html($!cancel_return)}">
+	<input type="hidden" name="rm" value="${esc.html($!rm)}">
+	<input type="hidden" name="no_note" value="${esc.html($!no_note)}">
+	<input type="hidden" name="no_shipping" value="${esc.html($!no_shipping)}">
+	<input type="hidden" name="subType" id="subType">
+	<input type="button" id="cancelPayment" value="Cancel mock payment">
+	<input type="button" id="submitPayment" value="Submit mock payment">
+</form>
+
+
+<script type="text/javascript" language="javascript">
+document.observe('dom:loaded', function() {
+	$('submitPayment').observe('click', function(event) {
+		event.stop()
+		$('subType').value = 'submit';
+		$('submitForm').submit();
+	});
+	$('cancelPayment').observe('click', function(event) {
+		event.stop()
+		$('subType').value = 'cancel';
+		$('submitForm').submit();
+	});
+});
+</script>
+
+#standardFooter()

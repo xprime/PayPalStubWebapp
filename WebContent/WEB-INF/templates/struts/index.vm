@@ -1,0 +1,5 @@
+#standardHeader("PayPal Stub")
+
+<p>Welcome to my PayPal stub!</p>
+
+#standardFooter()

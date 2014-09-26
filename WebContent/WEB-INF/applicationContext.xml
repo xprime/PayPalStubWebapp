@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!--
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" scope="singleton">
+		<property name="jndiName">
+			<value>java:comp/env/jdbc/quizDB</value>
+		</property>
+	</bean>
+	<bean id="hibernateSessionFactory" class="au.com.xprime.webapp.hibernate.component.HibernateSessionFactory" init-method="init" destroy-method="dispose" scope="singleton">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>org.vagg.quiz.hibernate.Quiz</value>
+				<value>org.vagg.quiz.hibernate.QuizQuestion</value>
+				<value>org.vagg.quiz.hibernate.QuizQuestionAnswer</value>
+				<value>org.vagg.quiz.hibernate.User</value>
+				<value>org.vagg.quiz.hibernate.UserQuestionAnswer</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLMyISAMDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="hibernateSession" class="au.com.xprime.webapp.hibernate.component.HibernateSession">
+		<property name="hibernateSessionFactory" ref="hibernateSessionFactory" />
+	</bean>
+	-->
+</beans>
